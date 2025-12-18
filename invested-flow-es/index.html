@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invested Flow ES</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <button class="btn-invested-flow" id="trigger-invested-flow">Invertir</button>
+
+    <section class="main-modal-invested-flow">
+        <div class="overlay"></div>
+        <div class="modal-invested-flow">
+            <div class="modal-invested-header">
+                <img src="./icons/lucide_chevron-left.png" class="prev-modal-invested hidden">
+                <div class="title-invested-header">Nueva inversión</div>
+                <img src="./icons/close-x.png" class="close-modal-invested">
+            </div>
+
+            <div id="step-invested-1" class="step-invested-flow">
+                <div class="invested-calculator-container">
+                    <h2 class="invested-title">Indica la cantidad a invertir</h2>
+
+                    <div class="invested-input-group">
+                        <input type="number" id="investedAmount" value="" min="0" class="invested-amount-input">
+                        <span class="invested-currency">€</span>
+                    </div>
+                    <div class="error-message" id="error-invested"></div>
+                    
+                    <p class="invested-balance-info">Saldo Disponible 0 €</p>
+
+                    <div class="invested-options-group">
+                        <label class="invested-option-button invested-selected" data-months="6" data-rate="0.05">
+                            <input type="radio" name="invested-term" value="6" checked>
+                            6 meses
+                            <span class="invested-rate-badge">5%</span>
+                        </label>
+                        <label class="invested-option-button" data-months="12" data-rate="0.055">
+                            <input type="radio" name="invested-term" value="12">
+                            12 meses
+                            <span class="invested-rate-badge">5.5%</span>
+                        </label>
+                    </div>
+
+                    <p class="invested-interest-note">
+                        <span class="invested-info-icon">ⓘ</span> La tasa expresada corresponde a una tasa anual de interés simple.
+                    </p>
+                    
+                    <hr class="invested-separator">
+
+                    <div class="invested-results-group">
+                        <div class="invested-result-item">
+                            <span class="invested-label">Total proyectado</span>
+                            <span class="invested-value" id="investedProjectedTotal">2.050,00 €</span>
+                        </div>
+                        <div class="invested-result-item">
+                            <span class="invested-label">Renta total</span>
+                            <span class="invested-value" id="investedTotalInterest">50,00 €</span>
+                        </div>
+                        <div class="invested-result-item">
+                            <span class="invested-label">Renta mensual</span>
+                            <span class="invested-value" id="investedMonthlyInterest">8,33 €</span>
+                        </div>
+                        <div class="invested-result-item invested-date-item">
+                            <span class="invested-label">Podrás retirar tu capital a partir del</span>
+                            <span class="invested-value" id="investedWithdrawalDate">12 de marzo 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert-invested">
+                    <img src="./icons/calendar-verified.png" alt="Icon Calendar">
+                    <div class="alert-invested-content">
+                        <strong>¡Realiza tu primera inversión sin compromiso!</strong>
+                        <p>Cuentas con 30 días de prueba para explorar nuestra web y sus funciones. Si no estás conforme, te devolvemos tu inversión.</p>
+                    </div>
+                </div>
+                <div class="alert-invested alert-invested--blue">
+                    <img src="./icons/illus_shield.png" alt="Icon Shield">
+                    <div class="alert-invested-content">
+                        <strong>Tu inversión está respaldada por inmuebles reales.</strong>
+                        <p>Se formaliza legalmente mediante un contrato de Cuentas en Participación, conforme al Código de Comercio.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="step-invested-2" class="step-invested-flow hidden">
+                <div class="invested-calculator-container">
+                    <h2 class="invested-title">Invertirás en Alicante Playa</h2>
+                    <div class="value-invested"><span id="value-invested">2.000</span>&nbsp;€</div>
+                    <hr class="invested-separator">
+
+                    <div class="detail-invested">
+                        <div class="detail-invested-header">
+                            <span>Detalle de tu inversión</span>
+                            <img src="./icons/lucide_chevron-down.png" alt="Icon Chevron Down">
+                        </div>
+                        <div class="detail-invested-content">
+                            <div class="invested-results-group">
+                                <div class="invested-result-item">
+                                    <span class="invested-label">Saldo disponible a utilizar</span>
+                                    <span class="invested-value">0 €</span>
+                                </div>
+                                <div class="invested-result-item">
+                                    <span class="invested-label">Total proyectado</span>
+                                    <span class="invested-value">2.050,00 €</span>
+                                </div>
+                                <div class="invested-result-item">
+                                    <span class="invested-label">Renta total</span>
+                                    <span class="invested-value">50,00 €</span>
+                                </div>
+                                <div class="invested-result-item">
+                                    <span class="invested-label">Renta mensual</span>
+                                    <span class="invested-value">8,33 €</span>
+                                </div>
+                                <div class="invested-result-item">
+                                    <span class="invested-label">Interés anual</span>
+                                    <span class="invested-value">8,33 €</span>
+                                </div>
+                                <div class="invested-result-item">
+                                    <span class="invested-label">Plazo</span>
+                                    <span class="invested-value">6 meses</span>
+                                </div>
+                                <div class="invested-result-item invested-date-item">
+                                    <span class="invested-label">Podrás retirar tu capital a partir del</span>
+                                    <span class="invested-value">12 de marzo 2026</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="payment-container">
+                    <div class="payment-header">
+                        <h2 class="payment-title">Seleccionar método de pago</h2>
+                        <div class="error-message" id="error-payments-methods"></div>
+                    </div>
+                    <label class="payment-option-card" for="cardPayment">
+                        <input type="radio" id="cardPayment" name="paymentMethod" value="card">
+                        <div class="card-content">
+                            <div class="main-info">
+                                <span class="radio-indicator"></span>
+                                <div class="text-group">
+                                    <span class="method-name">Tarjeta de Crédito / Débito</span>
+                                    <div class="bank-info">
+                                        <span class="bank-icon">
+                                            <img src="./icons/caixabank.png" alt="CaixaBank">
+                                        </span>
+                                        <span class="bank-name">CaixaBank</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="description-text" id="descriptionCard">
+                                <p class="description-info">Te redirigiremos a Whatsapp para que un asesor te envie el link de pago con CaixaBank, a través de la plataforma PayGoal.</p>
+                                <div class="alert-invested alert-invested--fill">
+                                    <img src="./icons/illus_shield.png" alt="Icon Shield" width="20px" height="20px">
+                                    <div class="alert-invested-content">
+                                        <strong>¡Realiza tu primera inversión sin compromiso!</strong>
+                                        <p>Cuentas con 30 días de prueba para explorar nuestra web y sus funciones. Si no estás conforme, te devolvemos tu inversión.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </label>
+                    <label class="payment-option-card" for="transferPayment">
+                        <input type="radio" id="transferPayment" name="paymentMethod" value="transfer">
+                        <div class="card-content">
+                            <div class="main-info">
+                                <span class="radio-indicator"></span>
+                                <div class="text-group">
+                                    <span class="method-name">Transferencia o depósito bancario</span>
+                                </div>
+                            </div>
+                            <div class="description-text" id="descriptionTransfer">
+                                <div class="description-transfer">
+                                    <img src="./icons/bbva.png" class="logo-bbva" alt="BBVA Logo">
+                                    <div class="detail-transfer">
+                                        <div class="detail-transfer-item">
+                                            <span>Titular / Beneficiario</span>
+                                            <span>SUMAR INVERSION ESPAÑA S.L.</span>
+                                        </div>
+                                        <div class="detail-transfer-item">
+                                            <span>Cuenta</span>
+                                            <div class="copy-text">
+                                                <span class="text">ES6501821797360203962419</span>
+                                                <img src="./icons/lucide_copy.png" class="trigger-copy-text">
+                                            </div>
+                                        </div>
+                                        <div class="detail-transfer-item">
+                                            <span>N.I.F.</span>
+                                            <div class="copy-text">
+                                                <span class="text">B16903668</span>
+                                                <img src="./icons/lucide_copy.png" class="trigger-copy-text">
+                                            </div>
+                                        </div>
+                                        <div class="detail-transfer-item">
+                                            <span>SWIFT</span>
+                                            <div class="copy-text">
+                                                <span class="text">BBVAESMMXXX</span>
+                                                <img src="./icons/lucide_copy.png" class="trigger-copy-text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="upload-container">
+                                        <input type="file" id="proof-upload" accept=".jpg, .jpeg, .png, .pdf" style="display: none;">
+
+                                        <div class="upload-box" id="upload-trigger">
+                                            <span class="icon-attach">
+                                                <img src="./icons/paperclip.png" alt="Icon Clip">
+                                            </span>
+                                            <span class="upload-text">Adjuntar comprobante</span>
+                                        </div>
+
+                                        <div class="file-info">
+                                            <span class="formatos">Formatos soportados: JPG, PNG, PDF.</span>
+                                            <span class="tamano">Tamaño máximo: 25MB</span>
+                                        </div>
+                                        <div class="error-message" id="error-upload"></div>
+                                        <div class="file-display-container" id="file-display-container"></div>
+                                    </div>
+                                </div>
+                                <div class="alert-invested alert-invested--warning">
+                                    <img src="./icons/warning.png" alt="Icon Warning">
+                                    <div class="alert-invested-content">
+                                        <strong>Importante</strong>
+                                        <p>Recuerda adjuntar el comprobante de la transferencia o enviarlo por correo a <a href="mailto:info@sumarinversion.es" target="_blank">info@sumarinversion.es</a> , en las siguientes 48 hs hábiles, para activar tu inversión.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="modal-invested-footer">
+                <button class="btn-sumar" id="support-cta">
+                    <span class="btn-sumar-icon">
+                        <img src="./icons/support.png">
+                    </span>
+                    <span class="btn-sumar-text">Contactar un asesor</span>
+                </button>
+                <button class="btn-sumar btn-sumar--invested">
+                    <span class="btn-sumar-icon">
+                        <img src="./icons/arrow.png">
+                    </span>
+                    <span class="btn-sumar-text">Siguiente</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script src="./index.js"></script>
+</body>
+</html>

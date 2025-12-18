@@ -1,0 +1,684 @@
+@font-face {
+    font-family: 'Helvetica Now Display';
+    src: url('./fonts/HelveticaNowDisplay-Regular.woff') format('woff');
+    font-weight: 400;
+    /* normal */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica Now Display';
+    src: url('./fonts/HelveticaNowDisplay-Bold.woff') format('woff');
+    font-weight: 700;
+    /* bold */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica Now Display';
+    src: url('./fonts/HelveticaNowDisplay-Light.woff') format('woff');
+    font-weight: 300;
+    /* light */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica Now Display';
+    src: url('./fonts/HelveticaNowDisplay-ExtraBold.woff') format('woff2');
+    font-weight: 800;
+    /* extra bold */
+    font-style: normal;
+}
+:root {
+    --invested-primary-color: #6a1b9a;
+    --invested-purple: #5C2D9A;
+    --invested-light-purple: #F8F2FF;
+    --invested-dark-text: #040404;
+    --invested-light-text: #666;
+    --invested-bg-color: #f7f7f7;
+    --invested-white: #FDFDFD;
+    --invested-separator-color: #ddd;
+    --invested-border: #EBEBFE;
+    --primary-purple: #6a1b9a;
+    --light-gray: #e0e0e0;
+    --dark-text: #333;
+    --white: #fff;
+    --caixabank-blue: #0087c5
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Now Display', sans-serif;
+}
+body {
+    padding: 2rem;
+}
+.btn-invested-flow {
+    border: none;
+    background: var(--invested-purple);
+    color: white;
+    border-radius: 200px;
+    font-size: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 180px;
+    height: 50px;
+    font-weight: 700;
+}
+.main-modal-invested-flow {
+    position: fixed;
+    background: #0a0a0a9a;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    overflow-y: auto;
+    z-index: 1000;
+}
+.main-modal-invested-flow .modal-invested-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 90px;
+}
+.main-modal-invested-flow .modal-invested-flow {
+    width: 694px;
+    min-height: 693.98px;
+    padding: 24px 32px 32px;
+    background: var(--invested-white);
+    border: 1px solid #EBEBEB;
+    border-radius: 24px;
+    height: fit-content;
+    margin: 50px 0;
+}
+.main-modal-invested-flow .modal-invested-header {
+    display: flex;
+    align-items: center;
+    padding-bottom: 25px;
+    .title-invested-header {
+        width: 100%;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--invested-dark-text);
+        margin-left: 25px;
+    }
+}
+.close-modal-invested {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    transition: opacity 0.2s ease;
+}
+.close-modal-invested:hover {
+    opacity: 0.7;
+}
+
+.invested-calculator-container {
+    padding: 20px 24px;
+    border-radius: 20px;
+    width: 100%;
+    border: 1px solid var(--invested-border);
+}
+
+.invested-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--invested-dark-text);
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.invested-input-group {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #CCCBEB;
+    padding-bottom: 5px;
+    width: 316px;
+    margin: auto;
+}
+
+.invested-amount-input {
+    border: none;
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
+    width: 200px;
+    color: var(--invested-dark-text);
+    outline: none;
+    -moz-appearance: textfield;
+}
+.invested-amount-input::-webkit-outer-spin-button,
+.invested-amount-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.invested-currency {
+    font-size: 36px;
+    font-weight: 600;
+    color: #9593BD;
+    margin-left: 3px;
+    line-height: 1;
+    margin-bottom: 3px;
+}
+
+.invested-balance-info {
+    text-align: center;
+    font-size: 0.9em;
+    color: #9593BD;
+    margin: 20px 0;
+}
+
+.invested-options-group {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 20px;
+}
+
+.invested-option-button {
+    display: flex;
+    align-items: center;
+    padding: 5px 7px 5px 10px;
+    border-radius: 20px;
+    border: 0.5px solid #9593BD;
+    cursor: pointer;
+    background-color: var(--invested-white);
+    transition: background-color 0.2s, border-color 0.2s;
+    font-size: 16px;
+    color: var(--invested-dark-text);
+    position: relative;
+}
+
+.invested-option-button input[type="radio"] {
+    display: none;
+}
+
+.invested-option-button.invested-selected {
+    background-color: var(--invested-light-purple);
+    border-color: #C8ACEE;
+    font-weight: 700;
+    color: var(--invested-purple);
+}
+
+.invested-rate-badge {
+    background-color: var(--invested-purple);
+    color: var(--invested-white);
+    width: 50px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.invested-interest-note {
+    text-align: center;
+    font-size: 14px;
+    color: #9593BD;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.invested-info-icon {
+    font-style: normal;
+    font-size: 1.1em;
+    margin-right: 5px;
+    color: var(--invested-light-text);
+}
+
+.invested-separator {
+    border: 0;
+    border-top: 1px solid #EBEBFE;
+    margin: 20px 0;
+}
+.prev-modal-invested {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.prev-modal-invested:hover {
+    opacity: 0.7;
+    transform: scale(1.1);
+}
+.invested-results-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.invested-result-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.invested-result-item .invested-label {
+    color: var(--invested-dark-text);
+}
+
+.invested-result-item .invested-value {
+    font-weight: 600;
+    color: var(--invested-dark-text);
+}
+.alert-invested {
+    font-size: 16px; 
+    background: #F9F9FF;
+    border: 1px solid #EBEBFE;
+    border-radius: 10px; 
+    padding: 12px 16px;
+    color: #552D9A;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.alert-invested .alert-invested-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.alert-invested.alert-invested--blue {
+    color: #3251A8;
+}
+.alert-invested.alert-invested--fill {
+    color: #4168D8;
+    border: none;
+    background: #EBEBFE;
+    align-items: start;
+    margin-top: 20px;
+}
+.alert-invested--warning {
+    background: #FFFAEB;
+    border: none;
+    color: #273F82;
+    align-items: start;
+    margin-top: 20px;
+    padding: 10px 9px;
+    gap: 9px;
+    a {
+        color: #273F82;
+        font-weight: 600;
+    }
+}
+.step-invested-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.btn-sumar {
+    /* width: 270px; */
+    min-width: 168px;
+    height: 50px;
+    color: var(--invested-purple);
+    border: 1px solid #CCCBEB;
+    font-size: 20px;
+    border-radius: 200px;
+    background: var(--invested-white);
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 7px;
+}
+.btn-sumar .btn-sumar-icon {
+    border-radius: 200px;
+    background: #cccbeb40;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+}
+.btn-sumar.btn-sumar--invested {
+    float: right;
+}
+.btn-sumar.btn-sumar--fill .btn-sumar-icon {
+    background: rgba(255, 255, 255, 0.2);
+}
+.btn-sumar.btn-sumar--fill {
+    border: none; 
+    background: var(--invested-purple);
+    color: var(--invested-white);
+    img {
+        filter: brightness(0) saturate(100%) invert(100%) sepia(6%) saturate(1281%) hue-rotate(116deg) brightness(116%) contrast(98%);
+    }
+}
+.btn-sumar .btn-sumar-text {
+    padding: 0 11px;
+}
+.hidden {
+    display: none !important;
+}
+.value-invested {
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--invested-purple);
+}
+.detail-invested .invested-result-item {
+    font-size: 16px;
+}
+.detail-invested-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--invested-dark-text);
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 8px;
+    user-select: none;
+}
+
+.detail-invested-header img {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+.detail-invested-content {
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s ease-in-out, 
+                transform 0.3s ease-in-out;
+    transform-origin: top;
+}
+
+
+.payment-container {
+    width: 100%;
+}
+
+.payment-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--invested-dark-text);
+}
+.payment-header {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Ocultar el radio button nativo */
+.payment-option-card input[type="radio"] {
+    display: none;
+}
+
+/* Estilo de la tarjeta de opción */
+.payment-option-card {
+    display: flex;
+    align-items: center;
+    border: 1px solid #CCCBEB;
+    border-radius: 8px;
+    padding: 12px 8px 8px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    min-height: 56px;
+}
+
+/* Estilo cuando la opción está seleccionada */
+/* payment-option-card */
+.payment-option-card input[type="radio"]:checked + .payment-option-card {
+    border-color: var(--primary-purple);
+    /* box-shadow: 0 0 0 2px var(--primary-purple); */
+}
+.radio-active {
+    border-color: #6F3BB3;
+}
+
+/* Contenido de la tarjeta */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* Necesario para que el :checked selector afecte el estilo, aunque no tenga borde propio */
+    transition: border-color 0.2s, box-shadow 0.2s; 
+}
+
+/* Información principal (radio + texto) */
+.main-info {
+    display: flex;
+    align-items: center;
+}
+
+.text-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.method-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--invested-dark-text);
+}
+
+/* Indicador de Radio (Círculo personalizado) */
+.radio-indicator {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 1.5px solid #CCCBEB;
+    border-radius: 50%;
+    margin-right: 15px;
+    margin-left: 10px;
+    position: relative;
+    flex-shrink: 0; /* Evita que el indicador se comprima */
+}
+
+/* Punto interior cuando está seleccionado */
+.payment-option-card input[type="radio"]:checked ~ .card-content .radio-indicator {
+    border-color: var(--primary-purple);
+}
+
+.payment-option-card input[type="radio"]:checked ~ .card-content .radio-indicator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--primary-purple);
+}
+
+/* Información del Banco */
+.bank-info {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    gap: 8px;
+}
+
+.bank-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    margin-right: 5px;
+    margin-top: -4px;
+    display: inline-block;
+}
+
+/* Simulación de Icono (CaixaBank) */
+.caixabank-icon {
+    background-color: var(--caixabank-blue);
+    /* Aquí iría el logo real, pero usamos un simple color */
+}
+
+.bank-name {
+    margin-top: 4px;
+    font-size: 16px;
+    color: #616083;
+}
+
+/* Área de descripción (Inicialmente oculta y animada) */
+.description-text {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.description-text .description-info {
+    font-size: 16px;
+    color: var(--invested-dark-text);
+    padding-top: 10px;
+    padding-left: 35px;
+}
+.description-text .description-transfer {
+    padding: 0 10px;
+    margin-top: 10px;
+}
+
+/* Clase para mostrar la descripción */
+.description-text.active {
+    max-height: 100%; /* Suficiente para el texto de descripción */
+    opacity: 1;
+}
+.copy-text {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.trigger-copy-text {
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.trigger-copy-text:hover {
+    opacity: 0.7;
+    transform: scale(1.1);
+}
+.detail-transfer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.detail-transfer-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo-bbva {
+    margin-bottom: 24px;
+}
+
+/* Upload */
+.upload-container {
+    width: 100%;
+    margin-top: 24px;
+}
+
+.upload-box {
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    background-color: white;
+    border: 1px solid #CCCBEB;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: var(--invested-purple);
+}
+
+.upload-box:hover {
+    background-color: var(--light-color);
+}
+
+.icon-attach {
+    font-size: 24px;
+    margin-right: 15px;
+    background: #F9F9FF;
+    border-radius: 6px;
+    height: 40px;
+    width: 40px;
+    display: grid;
+    place-items: center;
+}
+
+.upload-text {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* --- ESTILO DE LA INFORMACIÓN DE ARCHIVO --- */
+
+.file-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #9593BD;
+    margin-top: 8px;
+    margin-bottom: 3px;
+}
+.error-message {
+    font-size: 16px;
+    color: #D92D20;
+    font-weight: 500;
+}
+#error-invested {
+    text-align: center;
+    margin-top: 8px;
+}
+
+/* --- ESTILO DEL ARCHIVO ADJUNTADO --- */
+
+.file-display-container {
+    margin-top: 24px;
+}
+
+
+.file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 16px 11px 12px;
+    border: 1px solid #CCCBEB;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.file-details {
+    display: flex;
+    align-items: center;
+}
+
+.icon-file {
+    margin-right: 12px;
+    display: flex;
+}
+
+.file-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1C1C1C;
+}
+
+.close-button {
+    cursor: pointer;
+    font-size: 24px;
+    color: #ADAEC7;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.close-button:hover {
+    color: #e53935; /* Rojo al pasar el mouse para indicar eliminación */
+}
+
+.trigger-copy-text {
+    width: 20px;
+    height: 20px;
+}
